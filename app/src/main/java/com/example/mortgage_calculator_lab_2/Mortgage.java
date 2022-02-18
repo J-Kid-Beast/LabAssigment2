@@ -1,4 +1,7 @@
 package com.example.mortgage_calculator_lab_2;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import java.text.DecimalFormat;
 
 public class Mortgage {
@@ -11,11 +14,22 @@ public class Mortgage {
     /**The interest rate of the mortgage.*/
     private float rate;
 
+    private static final String PREFERENCE_AMOUNT = "amount";
+
     public Mortgage( ) {
         setAmount( 100000.0f );
         setYears( 30 );
         setRate( 0.035f );
     }// end default constructor
+
+    // Instantiate Mortgage from stored preferences
+    public Mortgage( Context context ) {
+        SharedPreferences pref = // enter code
+        setAmount( pref.getFloat( PREFERENCE_AMOUNT, 100000.0f));
+        // enter code
+        // enter code
+    }
+
 
     public void setAmount( float newAmount ) {
         if( newAmount >= 0 )
@@ -81,6 +95,15 @@ public class Mortgage {
     public String formattedTotalPayment( ) {
         return MONEY.format( totalPayment( ) );
     }// end formattedTotalPayment()
+
+    // Write mortgage data to preferences
+    public void setPreferences( Context context ) {
+        SharedPreferences pref = // enter code
+        // enter code
+        editor.putFloat( PREFERENCE_AMOUNT, amount );
+        //YOUR CODE
+    }// end setPreferences()
+
 
 }// end Mortgage class
 

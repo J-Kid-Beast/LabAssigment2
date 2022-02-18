@@ -55,6 +55,7 @@ public class DataActivity extends AppCompatActivity {
             mortgage.setAmount( amount );
             float rate = Float.parseFloat( rateString);
             mortgage.setRate(rate);
+            // new code for lab 3 here
         } catch( NumberFormatException nfe ) {
             mortgage.setAmount( 100000.0f );
             mortgage.setRate( .035f );
