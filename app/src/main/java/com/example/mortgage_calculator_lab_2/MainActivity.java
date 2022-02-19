@@ -11,8 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        // mortgage = new Mortgage( ); code is to be replaced
-        mortgage = // enter code
+        mortgage = new Mortgage(this);
         setContentView(R.layout.activity_main);
     }// end onCreate()
 

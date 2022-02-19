@@ -1,6 +1,7 @@
 package com.example.mortgage_calculator_lab_2;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.Preference;
 import android.preference.PreferenceManager;
 import java.text.DecimalFormat;
 
@@ -15,6 +16,9 @@ public class Mortgage {
     private float rate;
 
     private static final String PREFERENCE_AMOUNT = "amount";
+    private static final String PREFERENCE_YEARS = "years";
+    private static final String PREFERENCE_RATE = "rate";
+
 
     public Mortgage( ) {
         setAmount( 100000.0f );
@@ -24,11 +28,11 @@ public class Mortgage {
 
     // Instantiate Mortgage from stored preferences
     public Mortgage( Context context ) {
-        SharedPreferences pref = // enter code
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
         setAmount( pref.getFloat( PREFERENCE_AMOUNT, 100000.0f));
-        // enter code
-        // enter code
-    }
+        setYears(pref.getInt( PREFERENCE_YEARS, 30 ));
+        setRate ( pref.getFloat( PREFERENCE_RATE, 0.035f ));
+    }// end constructor
 
 
     public void setAmount( float newAmount ) {
@@ -98,10 +102,12 @@ public class Mortgage {
 
     // Write mortgage data to preferences
     public void setPreferences( Context context ) {
-        SharedPreferences pref = // enter code
-        // enter code
-        editor.putFloat( PREFERENCE_AMOUNT, amount );
-        //YOUR CODE
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putFloat(PREFERENCE_AMOUNT, amount);
+        editor.putInt(PREFERENCE_YEARS, years);
+        editor.putFloat(PREFERENCE_RATE, rate);
+        editor.commit();
     }// end setPreferences()
 
 
