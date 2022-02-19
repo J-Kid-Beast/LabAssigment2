@@ -66,6 +66,8 @@ public class DataActivity extends AppCompatActivity {
         updateMortgageObject();
         updateView();
         this.finish();
+        overridePendingTransition(R.anim.fade_in_and_scale, 0 );
+
     }// end goBack()
 
 }// end DataActivity class
